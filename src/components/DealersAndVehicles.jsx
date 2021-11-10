@@ -128,8 +128,15 @@ class DealersAndVehicles extends React.Component {
     return (
       <>
         <header>DataSetID: {this.state.dataSetId}</header>
-        <div>Total Milli Sec: {this.state.result.totalMilliseconds}</div>
-        <div>{this.state.result.message}</div>
+        <div style={{ display: this.state.result.success ? "none" : "block" }}>
+          Loading...
+        </div>
+        <div style={{ display: this.state.result.success ? "block" : "none" }}>
+          Total Milli Sec: {this.state.result.totalMilliseconds}
+        </div>
+        <div style={{ display: this.state.result.success ? "block" : "none" }}>
+          {this.state.result.message}
+        </div>
       </>
     );
   }
