@@ -2,6 +2,7 @@ import React from "react";
 import dataSetService from "../services/dataSetService";
 import * as dealersService from "../services/dealersService";
 import vehiclesService from "../services/vehiclesService";
+import "./DealersAndVehicles.css"
 
 class DealersAndVehicles extends React.Component {
   state = {
@@ -127,16 +128,28 @@ class DealersAndVehicles extends React.Component {
   render() {
     return (
       <>
-        <header>DataSetID: {this.state.dataSetId}</header>
-        <div style={{ display: this.state.result.success ? "none" : "block" }}>
-          Loading...
-        </div>
-        <div style={{ display: this.state.result.success ? "block" : "none" }}>
-          Total Milli Sec: {this.state.result.totalMilliseconds}
-        </div>
-        <div style={{ display: this.state.result.success ? "block" : "none" }}>
-          {this.state.result.message}
-        </div>
+        <div class="container">
+          <main role="main" class="pb-3">           
+            <div class="jumbotron">
+              <h1 class="display-3">DataSetID: {this.state.dataSetId}</h1>          
+              <h4 class="alert alert-primary" style={{ display: this.state.result.success ? "none" : "block" }}>
+                Loading...Please Wait
+                <hr/>
+                <div class="loader center"></div>
+              </h4>
+              <div style={{ display: this.state.result.success ? "block" : "none" }} class="alert alert-success" role="alert">
+                <h4 class="alert-heading">Success!</h4>
+                 <hr/>
+                 <p >
+                  Total MilliSeconds: {this.state.result.totalMilliseconds}
+                 </p>
+                 <p>
+                  Result Message: {this.state.result.message}
+                 </p>
+              </div>
+            </div>
+          </main>
+        </div>      
       </>
     );
   }
